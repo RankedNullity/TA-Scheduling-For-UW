@@ -13,6 +13,7 @@
     $('Generate-Button').addEventListener('click', function() {
       let input = document.querySelectorAll('input');
       let totalTAs = input[input.length - 1].value * input[input.length - 2].value;
+      totalTAs = totalTAs === 0 ? 50 : totalTAs;
       console.log("total TAs: " + totalTAs);
       let students = [];
       for (let i = 0; i < input.length - 2; i++) {
@@ -42,7 +43,7 @@
         rows[i][j].innerText = distribution[index] === 0 ? "" : distribution[index];
       }
     }
-    
+
     document.querySelectorAll('#Special-Box')[1].innerText = "Output Table";
 
   }
