@@ -27,9 +27,24 @@
 
   function generateOutput(distribution) {
     let table = $("Answer-Table");
+    table.innerText = "";
     table.appendChild($("Input-Table").cloneNode(true));
-    let answer = document.querySelectorAll('#Input-Table')[1];
-    console.log(answer);
+    let answer = document.querySelectorAll('#Input-Table')[1].childNodes;
+
+    let rows = [];
+    for (let i = 3; i < answer.length; i += 2) {
+      rows.push(answer[i].childNodes);
+    }
+    console.log(rows);
+    for (let i = 0; i < rows.length; i++) {
+      for (let j = 3; j < rows[i].length; j++) {
+        let index = i * 7 + Math.floor(j / 2) - 1;
+        rows[i][j].innerText = distribution[index] === 0 ? "" : distribution[index];
+      }
+    }
+    
+    document.querySelectorAll('#Special-Box')[1].innerText = "Output Table";
+
   }
 
   /**
